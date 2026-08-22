@@ -27,7 +27,7 @@ int main(void)
 	// dejamos en las variables 'ip', 'puerto' y 'valor'
 	ip = config_get_string_value(config,"IP");
 	puerto = config_get_string_value(config,"Puerto");
-	valor = config_get_string_value(config,"KEY");
+	valor = config_get_string_value(config,"CLAVE");
 
 	// Loggeamos el valor de config
 	log_info(logger, "Valor leido en config: %s", valor);
