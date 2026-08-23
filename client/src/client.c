@@ -44,6 +44,7 @@ int main(void)
 	conexion = crear_conexion(ip, puerto);
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
+	enviar_mensaje(valor,conexion);
 
 	// Armamos y enviamos el paquete
 	paquete(conexion);
@@ -98,7 +99,22 @@ void paquete(int conexion)
 	char* leido;
 	t_paquete* paquete;
 
+	paquete = crear_paquete();
 	// Leemos y esta vez agregamos las lineas al paquete
+		// La primera te la dejo de yapa
+	leido = readline("> ");
+
+	// El resto, las vamos leyendo y logueando hasta recibir un string vacío
+	while (strcmp(leido,"")!=0)
+	{
+		log_info(logger,"leido: %s",leido);
+		agregar_a_paquete(paquete,leido,strlen(leido)+1);
+		free(leido);
+		leido=readline("> ");
+	}
+	
+	enviar_paquete(paquete,conexion);
+	eliminar_paquete(paquete);
 
 
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
@@ -111,4 +127,5 @@ void terminar_programa(int conexion, t_log* logger, t_config* config)
 	  con las funciones de las commons y del TP mencionadas en el enunciado */
 	log_destroy(logger);
 	config_destroy(config);
+	liberar_conexion(conexion);
 }
