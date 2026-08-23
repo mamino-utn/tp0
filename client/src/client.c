@@ -107,7 +107,6 @@ void paquete(int conexion)
 	// El resto, las vamos leyendo y logueando hasta recibir un string vacío
 	while (strcmp(leido,"")!=0)
 	{
-		log_info(logger,"leido: %s",leido);
 		agregar_a_paquete(paquete,leido,strlen(leido)+1);
 		free(leido);
 		leido=readline("> ");
