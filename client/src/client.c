@@ -26,7 +26,7 @@ int main(void)
 	// Usando el config creado previamente, leemos los valores del config y los 
 	// dejamos en las variables 'ip', 'puerto' y 'valor'
 	ip = config_get_string_value(config,"IP");
-	puerto = config_get_string_value(config,"Puerto");
+	puerto = config_get_string_value(config,"PUERTO");
 	valor = config_get_string_value(config,"CLAVE");
 
 	// Loggeamos el valor de config
@@ -88,6 +88,8 @@ void leer_consola(t_log* logger)
 		leido=readline("> ");
 	}
 	
+	free(leido);
+	
 
 	// ¡No te olvides de liberar las lineas antes de regresar!
 
@@ -111,6 +113,7 @@ void paquete(int conexion)
 		free(leido);
 		leido=readline("> ");
 	}
+	free(leido);
 	
 	enviar_paquete(paquete,conexion);
 	eliminar_paquete(paquete);
