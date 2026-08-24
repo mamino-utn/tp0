@@ -51,6 +51,7 @@ int main(void)
 
 	terminar_programa(conexion, logger, config);
 
+	// ETAPA 4: Realizada conexion exitosa!
 	/*---------------------------------------------------PARTE 5-------------------------------------------------------------*/
 	// Proximamente
 }
